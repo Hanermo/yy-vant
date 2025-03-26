@@ -1,4 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
+const loader = require('sass-loader')
+const resolve = (dir) => path.join(__dirname,'.',dir)
+const path = require('path')
 module.exports = defineConfig({
   assetsDir: 'static',
   publicPath: './',
@@ -23,6 +26,32 @@ module.exports = defineConfig({
         prependData: `@import "@/assets/scss/variables.scss";`  //全局使用sass变量
       }
     }
+  },
+  chainWebpack: (config) => {
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
+      .use('svgo-loader')
+      .loader('svgo-loader')
+      .options({
+        plugins: [{
+          name: 'removeAttrs',
+          params: { attrs: 'fill' }
+        }]
+      })
+      .end()
   },
   devServer: {
     open:false,

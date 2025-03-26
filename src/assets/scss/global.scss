@@ -6,7 +6,7 @@ ul,
 li{
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 13px;
 }
 i,
 li{
@@ -23,4 +23,18 @@ body,
     font-family: "microsoft yahei";
     color: #333;
     background: $bgblue-color;
+}
+
+
+.avatar-icon{
+    background: url('@/assets/images/img/avatar.png') no-repeat center center / contain;
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+}
+.search-icon{
+    background: url('@/assets/images/img/search-icon.png') no-repeat center center / contain;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
 }
