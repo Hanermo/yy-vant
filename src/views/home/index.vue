@@ -9,8 +9,8 @@
     <div class="calendar-box">
         <calendar
         :events="[
-            { date: '2025-3-22', status: 'done' },
-            { date: '2025-3-26', status: 'pending' }
+            // { date: '2025-3-22', status: 'done' },
+            // { date: '2025-3-26', status: 'pending' }
         ]"
         />
     </div>
