@@ -4,15 +4,24 @@
     <router-view></router-view>
     
     <div class="tabbar-footer">
-      <van-tabbar v-model="active" routes fixed active-color="#2279C9" inactive-color="#333">
+      <van-tabbar v-model="active" route fixed active-color="#2279C9" inactive-color="#333">
         <van-tabbar-item v-for="(item,index) in tabbarItemList" :key="index + 'item'" replace :to="item.path">
           <span>{{ item.text }}</span>
           <template #icon="props">
-            <svg-icon :name="item.icon" class-name="svg1"></svg-icon>
+            <div v-if="item.type">
+              <div class="create-btn" @click="openCreate">
+                <van-icon name="plus" size="22px"></van-icon>
+              </div>
+            </div>
+            <svg-icon :name="item.icon" class-name="svg1" v-else></svg-icon>
           </template>
         </van-tabbar-item>
       </van-tabbar>
     </div>
+    <!-- 打开创建弹窗 -->
+    <van-popup v-model="createPopupVisible" :style="{height: '50%'}" position="bottom" round >
+      <createItems v-if="createPopupVisible"></createItems>
+    </van-popup>
   </div>
 </template>
 
@@ -34,20 +43,32 @@ export default {
             path: '/channel'
           },
           {
+            type: 'create',
+            icon: 'plus',
+            text: '',
+            path: ''
+          },
+          {
+            icon: 'box',
+            text: '消息',
+            path: '/messages'
+          },
+          {
             icon: 'smile',
             text: '动态',
             path: '/dynamics'
           },
-          {
-            icon: 'user',
-            text: '我的',
-            path: '/mine'
-          },
-        ]
+        ],
+        createPopupVisible: false
       }
     },
     methods:{
-      
+      openCreate(){
+        this.createPopupVisible = true
+      }
+    },
+    components: {
+      createItems: () => import('@/views/create-items/index.vue')
     }
 }
 </script>
@@ -56,5 +77,20 @@ export default {
 .index{
   height: 100%;
   box-sizing: border-box;
+  .create-btn{
+    background: #2279C9;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /deep/ {
+    .van-overlay{
+      background: #9d9d9d2b;
+    }
+  }
 }
 </style>

@@ -1,15 +1,17 @@
 <template>
-    <div class="diet-diary-wrapper">
-        <div class="diet-diary-box-title">
-            早餐
+    <div class="memo-wrapper">
+        <div class="memo-box-title">
+            备忘录
         </div>
-        <div class="diet-diary-box-content">250大卡</div>
+        <ul class="memo-box-content">
+            <li v-for="i in 3" :key="i">{{ i }}.不要熬夜</li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
-    name:'diet-diary',
+    name:'memo',
     data(){
       return{
          
@@ -19,18 +21,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.diet-diary-wrapper{
+.memo-wrapper{
     width: fit-content;
     background: #fff;
     border-radius: 10px;
-    .diet-diary-box-title{
+    .memo-box-title{
         padding: 10px;
         border-radius: 10px 10px 0 0;
-        background: #c9c8f2;
-        color: #59587b;
+        background: #bcd2e7;
+        color: #586a7b;
         font-weight: 600;
     }
-    .diet-diary-box-content{
+    .memo-box-content{
         padding: 10px;
     }
 }

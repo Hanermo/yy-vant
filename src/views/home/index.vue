@@ -9,8 +9,8 @@
     <div class="calendar-box">
         <calendar
         :events="[
-            // { date: '2025-3-22', status: 'done' },
-            // { date: '2025-3-26', status: 'pending' }
+            { date: '2025-4-27', count: 1 },
+            { date: '2025-4-30', count: 2 }
         ]"
         />
     </div>
@@ -47,24 +47,34 @@ export default {
 
 <style lang="scss" scoped>
 .home-wrap{
-    background: #fff;
+    // background: #fff;
     height: calc(100% - 50px);/*no*/
+    width: 100%;
     box-sizing: border-box;
-    overflow: auto;
-    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
     .nav-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 10px;
         background: #fff;
+        padding: 15px;
     }
     .nav-top.sticky-top {
-        padding: 15px;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.16);
     }
     .calendar-box{
-        padding: 15px 0;
+        padding: 8px 8px 0;
+        .calendar-wrap {
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+        }
+    }
+    .home-content{
+        padding: 8px;
+        margin-top: 16px;
     }
 }
 </style>

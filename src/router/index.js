@@ -7,6 +7,7 @@ const Login = () => import('@/views/login/index.vue');
 const Mine = () => import('@/views/mine/index.vue');
 const Channel = () => import('@/views/channel/index.vue');
 const Dynamics = () => import('@/views/dynamics/index.vue');
+const Messages = () => import('@/views/messages/index.vue');
 
 Vue.use(Router)
 const router = new Router({
@@ -31,14 +32,14 @@ const router = new Router({
                     meta: { keepAlive: true },
                 },
                 {
-                    path: '/mine',
-                    name: 'Mine',
-                    component: Mine
-                },
-                {
                     path: '/channel',
                     name: 'Channel',
                     component: Channel
+                },
+                {
+                    path: '/messages',
+                    name: 'Messages',
+                    component: Messages
                 },
                 {
                     path: '/dynamics',
