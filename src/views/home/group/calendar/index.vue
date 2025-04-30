@@ -16,7 +16,9 @@
             <span class="date">农历 {{getLunarDate(currentDate)}}</span>
         </div>
         <!-- 弹出日历 -->
-        <calendarPicker :show.sync="calendarShow"></calendarPicker>
+        <van-popup v-model="calendarShow" :style="{height: '70%'}" position="bottom" round >
+            <calendarPicker v-if="calendarShow"></calendarPicker>
+        </van-popup>
     </div>
 </template>
 
@@ -39,7 +41,7 @@ export default {
     },
     computed:{
         todayFormat(){
-            const date = new Date()
+            const date = this.currentDate
             return  `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`
         },
         currentWeekList(){

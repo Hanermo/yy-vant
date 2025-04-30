@@ -22,18 +22,17 @@ export default {
 
 <style lang="scss" scoped>
 .memo-wrapper{
-    width: fit-content;
+    width: 100%;
     background: #fff;
     border-radius: 10px;
     .memo-box-title{
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
-        background: #bcd2e7;
-        color: #586a7b;
+        padding: 8px 10px;
+        color: #3d3d3d;
         font-weight: 600;
+        font-size: 15px;
     }
     .memo-box-content{
-        padding: 10px;
+        padding: 0 10px 10px;
     }
 }
 </style>

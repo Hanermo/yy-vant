@@ -1,6 +1,10 @@
 <template>
     <div class="schedule-list-wrapper">
         <ul class="ul-box" v-if="sort == 1">
+            <div class="ul-title">
+                <div class="t-text">全部日程</div>
+                <van-icon name="arrow" color="#828488"></van-icon>
+            </div>
             <li :class="['li-item', item.fontClass]" v-for="(item,index) in scheduleList" :key="index + 'li-item'">
                 <div class="li-left">
                     <div class="li-title">{{ item.title }}</div>
@@ -55,7 +59,14 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
+    .ul-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .t-text{
+            font-weight: 600;
+        }
+    }
 }
 .li-item{
     padding: 16px 12px;

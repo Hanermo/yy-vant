@@ -6,7 +6,7 @@
         <div class="create-items-body">
             <ul class="body-type-ul">
                 <li v-for="(item,index) in createTypeList" :key="item.id" class="li-item">
-                    <van-icon :name="item.icon"></van-icon>
+                    <van-icon :name="item.icon" size="18px"></van-icon>
                     <div>{{ item.label }}</div>
                 </li>
             </ul>
@@ -22,9 +22,9 @@ export default {
     data(){
       return{
         createTypeList: [
-            { id: 1, label: '日程', icon: 'star-o' },
-            { id: 2, label: '饮食', icon: 'star-o' },
-            { id: 3, label: '备忘录', icon: 'star-o' },
+            { id: 1, label: '日程', icon: 'smile-o' },
+            { id: 2, label: '饮食', icon: 'flower-o' },
+            { id: 3, label: '备忘录', icon: 'notes-o' },
         ]
       }
     },
@@ -58,9 +58,11 @@ export default {
             gap: 10px;
             .li-item {
                 display: flex;
-                flex-direction: column;
                 align-items: center;
                 gap: 5px;
+                border-radius: 10px;
+                background: #e1e3ff;
+                padding: 8px 15px;
             }
         }
     }

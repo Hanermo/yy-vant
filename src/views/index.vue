@@ -19,7 +19,7 @@
       </van-tabbar>
     </div>
     <!-- 打开创建弹窗 -->
-    <van-popup v-model="createPopupVisible" :style="{height: '50%'}" position="bottom" round >
+    <van-popup v-model="createPopupVisible" :style="{height: '35%'}" position="bottom" round >
       <createItems v-if="createPopupVisible"></createItems>
     </van-popup>
   </div>
@@ -49,7 +49,7 @@ export default {
             path: ''
           },
           {
-            icon: 'box',
+            icon: 'message',
             text: '消息',
             path: '/messages'
           },

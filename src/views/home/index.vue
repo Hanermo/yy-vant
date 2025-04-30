@@ -3,7 +3,7 @@
     <van-sticky @change="stickyChange">
         <div :class="['nav-top',isSticky ? 'sticky-top': '']">
             <search placeholder="请输入关键词" @_search="onSearch"></search>
-            <van-icon class="avatar-icon" style="height: 42px;"></van-icon>
+            <van-icon class="avatar-icon" style="height: 42px;" @click="openMineSetUp"></van-icon>
         </div>
     </van-sticky>
     <div class="calendar-box">
@@ -18,6 +18,11 @@
         <!-- 追踪任意模块 -->
         <trackerSlot />
     </div>
+
+    <!-- 打开我的弹窗 -->
+    <van-popup v-model="minePopupVisible" :style="{height: '100%',width: '80%'}" position="right" >
+      <mine v-if="minePopupVisible"></mine>
+    </van-popup>
  </div>
 </template>
 
@@ -26,7 +31,8 @@ export default {
     name:'home',
     data(){
         return{
-            isSticky: false
+            isSticky: false,
+            minePopupVisible: false
         }
     },
     methods:{
@@ -36,11 +42,15 @@ export default {
         stickyChange(isFixed){
             console.log('isFixed',isFixed);
             this.isSticky = isFixed
+        },
+        openMineSetUp(){
+            this.minePopupVisible = true
         }
     },
     components: {
         calendar: () => import('@/views/home/group/calendar/index.vue'),
-        trackerSlot: () => import('@/views/home/group/tracker-slot/index.vue')
+        trackerSlot: () => import('@/views/home/group/tracker-slot/index.vue'),
+        mine: () => import('@/views/mine/index.vue')
     }
 }
 </script>
