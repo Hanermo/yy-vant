@@ -50,6 +50,6 @@ export default {
 .slot-edit {
   text-align: center;
   padding: 20px 0 0;
-  color: #2279c9;
+  color: $primary-color;
 }
 </style>

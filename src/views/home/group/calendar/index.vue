@@ -2,7 +2,7 @@
     <div class="calendar-wrap">
         <div class="c-title">
             <span>{{ todayFormat }}</span>
-            <svg-icon name="calendar1" font-size="23px" color="#2279C9" @click.native.stop="openCalendar"></svg-icon>
+            <svg-icon name="calendar1" font-size="23px" color="#0164F6" @click.native.stop="openCalendar"></svg-icon>
         </div>
         <div :class="['calendar-content']">
             <div class="cur-calendar-item" v-for="(item,index) in currentWeekList" :key="index + 'curItem'">

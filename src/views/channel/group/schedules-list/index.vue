@@ -102,9 +102,9 @@ export default {
     transition: all .2s ease;
     .li-left{
         text-decoration: line-through;
-        color: #2279C9;
+        color: $primary-color;
         .li-title,.li-time{
-            color: #2279C9;
+            color: $primary-color;
         }
     }
 }

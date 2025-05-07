@@ -7,7 +7,7 @@
         class="calendar-picker"
         :poppable="false"
         :show-confirm="false"
-        color="#2279C9"
+        color="#0164F6"
         :style="{ height: '500px' }"
         />
     </div>

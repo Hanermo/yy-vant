@@ -4,7 +4,7 @@
     <router-view></router-view>
     
     <div class="tabbar-footer">
-      <van-tabbar v-model="active" route fixed active-color="#2279C9" inactive-color="#333">
+      <van-tabbar v-model="active" route fixed active-color="#0164F6" inactive-color="#333">
         <van-tabbar-item v-for="(item,index) in tabbarItemList" :key="index + 'item'" replace :to="item.path">
           <span>{{ item.text }}</span>
           <template #icon="props">
@@ -78,7 +78,7 @@ export default {
   height: 100%;
   box-sizing: border-box;
   .create-btn{
-    background: #2279C9;
+    background: $primary-color;
     color: #fff;
     width: 32px;
     height: 32px;
