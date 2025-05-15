@@ -21,7 +21,7 @@
 
     <!-- 打开我的弹窗 -->
     <van-popup v-model="minePopupVisible" :style="{height: '100%',width: '80%'}" position="right" >
-      <mine v-if="minePopupVisible"></mine>
+      <mine></mine>
     </van-popup>
  </div>
 </template>

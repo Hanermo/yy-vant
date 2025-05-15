@@ -5,7 +5,7 @@
         </div>
         <div class="create-items-body">
             <ul class="body-type-ul">
-                <li v-for="(item,index) in createTypeList" :key="item.id" class="li-item">
+                <li v-for="(item,index) in createTypeList" :key="item.id" class="li-item" @click="createItemHandle(item)">
                     <van-icon :name="item.icon" size="18px"></van-icon>
                     <div>{{ item.label }}</div>
                 </li>
@@ -29,6 +29,11 @@ export default {
       }
     },
     methods:{
+        createItemHandle(item){
+            if(item.label == '日程'){
+                this.$router.push('/schedule/schedule-add')
+            }
+        }
     }
 }
 </script>

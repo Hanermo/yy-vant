@@ -1,7 +1,7 @@
 <template>
     <div class="calendar-wrap">
         <div class="c-title">
-            <span>{{ todayFormat }}</span>
+            <span><div class="dot"></div>{{ todayFormat }}</span>
             <svg-icon name="calendar1" font-size="23px" color="#0164F6" @click.native.stop="openCalendar"></svg-icon>
         </div>
         <div :class="['calendar-content']">
@@ -13,11 +13,11 @@
         </div>
         <div class="c-footer">
             <span>{{ formatTimeDistance(currentDate) }}</span>
-            <span class="date">农历 {{getLunarDate(currentDate)}}</span>
+            <span class="date">农历{{getLunarDate(currentDate)}}</span>
         </div>
         <!-- 弹出日历 -->
         <van-popup v-model="calendarShow" :style="{height: '70%'}" position="bottom" round >
-            <calendarPicker v-if="calendarShow"></calendarPicker>
+            <calendarPicker></calendarPicker>
         </van-popup>
     </div>
 </template>
@@ -163,6 +163,17 @@ export default {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+    span{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .dot{
+        width: 6px;
+        height: 6px;
+        background: #3BCF12;
+        border-radius: 50px;
+    }
 }
 .calendar-content {
     display: flex;
@@ -209,7 +220,7 @@ export default {
     }
 }
 .c-footer{
-    padding: 20px 0 0;
+    padding: 12px 0 0;
     font-size: 13px;
     .date{
         color: #9A9A9A;

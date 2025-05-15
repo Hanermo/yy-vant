@@ -9,6 +9,10 @@ const Channel = () => import('@/views/channel/index.vue');
 const Dynamics = () => import('@/views/dynamics/index.vue');
 const Messages = () => import('@/views/messages/index.vue');
 
+// 创建事项
+const ScheduleList = () => import('@/views/channel/group/schedules-list/index.vue')
+const AddSchedule = () => import('@/views/create-items/components/add-schedule.vue')
+
 Vue.use(Router)
 const router = new Router({
     mode: 'hash',
@@ -21,33 +25,49 @@ const router = new Router({
         },
         {
             path: '/',
+            redirect:'/index',
+        },
+        {
+            path: '/',
             name: 'index',
             component: Index,
-            redirect:'/index',
             children: [
                 {
-                    path: '/index',
+                    path: 'index',
                     name: 'Home',
                     component: Home,
                     meta: { keepAlive: true },
                 },
                 {
-                    path: '/channel',
+                    path: 'channel',
                     name: 'Channel',
                     component: Channel
                 },
                 {
-                    path: '/messages',
+                    path: 'messages',
                     name: 'Messages',
                     component: Messages
                 },
                 {
-                    path: '/dynamics',
+                    path: 'dynamics',
                     name: 'Dynamics',
                     component: Dynamics
                 }
             ]
         },
+        {
+            path: '/schedule',
+            name: 'Schedule',
+            component: ScheduleList,
+            children: [
+                
+            ]
+        },
+        {
+            path: '/schedule/schedule-add',
+            name: 'ScheduleAdd',
+            component: AddSchedule,
+        }
     ]
 })
 export default router

@@ -6,7 +6,7 @@
         <div class="slot-edit" @click="openEdit">编辑卡片</div>
         <!-- 编辑卡片弹出框 -->
         <van-popup v-model="slotEditPopupVisible" :style="{height: '100%',width: '100%'}" position="right">
-          <sortModules v-if="slotEditPopupVisible" @close="closeEvent"></sortModules>
+          <sortModules @close="closeEvent"></sortModules>
         </van-popup>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
       }
     },
     components: {
-        schedulesList: () => import('@/views/channel/group/schedules-list/index.vue'),
+        schedulesList: () => import('@/views/channel/group/schedules-list/components/simple-list.vue'),
         dietDiary: () => import('@/views/channel/group/diet-diary/index.vue'),
         memoComp: () => import('@/views/channel/group/memo/index.vue'),
         sortModules: () => import('@/views/home/group/tracker-slot/components/sort-modules.vue')

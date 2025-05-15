@@ -20,7 +20,7 @@
     </div>
     <!-- 打开创建弹窗 -->
     <van-popup v-model="createPopupVisible" :style="{height: '35%'}" position="bottom" round >
-      <createItems v-if="createPopupVisible"></createItems>
+      <createItems></createItems>
     </van-popup>
   </div>
 </template>

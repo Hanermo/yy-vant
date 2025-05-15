@@ -76,8 +76,8 @@ export default {
                     gap: 3px;
                     .van-icon{
                         display: inline-block;
-                        width: 15px;
-                        height: 15px;
+                        width: 13px;
+                        height: 13px;
                     }
                     .user{
                         background: url('@/assets/images/img/user.png') no-repeat center center / contain;
@@ -89,6 +89,10 @@ export default {
             }
         }
         .mine-check-user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
             margin: 30px 0;
             padding: 10px;
             text-align: center;
@@ -96,6 +100,14 @@ export default {
             background: #e8e8e8;
             color: #3d3d3d;
             font-size: 14px;
+            .van-icon{
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+            }
+            .check-user{
+                background: url('@/assets/images/img/check-user.png') no-repeat center center / contain;
+            }
         }
     }
 }
