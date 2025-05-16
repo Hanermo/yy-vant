@@ -6,6 +6,8 @@ import 'vant/lib/index.css'
 import 'lib-flexible'
 import store from './store'
 import '@/icons'
+import * as echarts from "echarts";
+Vue.prototype.$echarts = echarts;
 
 // 全局组件
 import components from '@/components/index'

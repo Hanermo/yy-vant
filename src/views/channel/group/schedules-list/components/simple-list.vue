@@ -1,6 +1,6 @@
 <template>
     <div class="simple-list-wrapper">
-        <ul class="ul-box" v-if="sort == 1">
+        <ul class="ul-box">
             <div class="ul-title">
                 <div class="t-text">全部日程</div>
                 <van-icon name="arrow" color="#828488"></van-icon>
@@ -20,15 +20,6 @@
                 </div>
             </li>
         </ul>
-        <div :class="['li-item',scheduleList[0].fontClass]" v-else>
-            <div class="li-left">
-                <div class="li-title">{{ scheduleList[0].title }}</div>
-                <div class="li-time">{{ scheduleList[0].time }}</div>
-            </div>
-            <div class="li-right">
-                <van-checkbox v-model="scheduleList[0].checked" shape @change="checkChange(scheduleList[0])"></van-checkbox>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -36,10 +27,7 @@
 export default {
     name:'simple-list',
     props: {
-        sort: {
-            type: Number,
-            default: 1
-        }
+        
     },
     data(){
       return{
