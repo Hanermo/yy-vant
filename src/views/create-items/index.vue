@@ -6,7 +6,9 @@
         <div class="create-items-body">
             <ul class="body-type-ul">
                 <li v-for="(item,index) in createTypeList" :key="item.id" class="li-item" @click="createItemHandle(item)">
-                    <van-icon :name="item.icon" size="18px"></van-icon>
+                    <div class="li-svg" :style="{ background: item.bgColor }">
+                        <svg-icon :name="item.icon" font-size="20px" color="#fff"></svg-icon>
+                    </div>
                     <div>{{ item.label }}</div>
                 </li>
             </ul>
@@ -22,9 +24,10 @@ export default {
     data(){
       return{
         createTypeList: [
-            { id: 1, label: '日程', icon: 'smile-o' },
-            { id: 2, label: '饮食', icon: 'flower-o' },
-            { id: 3, label: '备忘录', icon: 'notes-o' },
+            { id: 1, label: '日程', icon: 'schedule', bgColor: '#A46EFF' },
+            { id: 2, label: '饮食', icon: 'diet', bgColor: '#44A9FF' },
+            { id: 3, label: '备忘录', icon: 'notes', bgColor: '#4070FF' },
+            { id: 4, label: '倒计时', icon: 'countdown', bgColor: '#FF9429' },
         ]
       }
     },
@@ -64,10 +67,19 @@ export default {
             .li-item {
                 display: flex;
                 align-items: center;
+                flex-direction: column;
                 gap: 5px;
                 border-radius: 10px;
-                background: #e1e3ff;
                 padding: 8px 15px;
+                .li-svg{
+                    background: #ccc;
+                    border-radius: 15px;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
     }

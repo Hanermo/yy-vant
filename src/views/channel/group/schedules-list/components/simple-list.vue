@@ -1,10 +1,10 @@
 <template>
     <div class="simple-list-wrapper">
-        <ul class="ul-box">
-            <div class="ul-title">
+        <div class="ul-title">
                 <div class="t-text">全部日程</div>
                 <van-icon name="arrow" color="#828488"></van-icon>
             </div>
+        <ul class="ul-box" v-if="scheduleList.length">
             <li :class="['li-item', item.fontClass]" v-for="(item,index) in scheduleList" :key="index + 'li-item'">
                 <div class="li-left">
                     <div class="circle-logo" :style="{background: item.checked ? '#F5F5F5' : '#DEECFF'}">
@@ -20,6 +20,10 @@
                 </div>
             </li>
         </ul>
+        <div class="no-data-box" v-else>
+            <img :src="imgUrl" alt="" width="35%">
+            <p>{{ tip }}</p>
+        </div>
     </div>
 </template>
 
@@ -34,7 +38,10 @@ export default {
         scheduleList: [
             { title: '户外跑步3公里', time: '7:30PM', checked: false },
             { title: '帕梅拉12min有氧训练', time: '8:30PM', checked: false },
-        ]
+            { title: '早上吃药', time: '9:30PM', checked: false },
+        ],
+        imgUrl: require("@/assets/images/img/no-data.png"),
+        tip: '今天没有日程，享受生活吧！'
       }
     },
     methods: {
@@ -48,18 +55,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.ul-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    .t-text{
+        font-weight: 600;
+    }
+}
 .ul-box{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    .ul-title{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .t-text{
-            font-weight: 600;
-        }
-    }
+
+}
+.no-data-box {
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 15px;
 }
 .li-item{
     padding: 16px 12px;

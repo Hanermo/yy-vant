@@ -1,7 +1,7 @@
 <template>
     <div class="diet-diary-wrapper">
         <div class="dd-content">
-            <div style="width: 90px; height: 90px;" id="ringCharts"></div>
+            <div style="width: 90px; height: 90px;" ref="ringChartsWrapper" id="ringCharts"></div>
             <div class="box-value-right">
                 <div class="r-current">
                     <i class="i-fire"></i>
@@ -22,17 +22,26 @@ export default {
     name:'diet-diary',
     data(){
       return{
-         
+        chartInstance: null
       }
     },
     mounted(){
-        this.setRingCharts()
+        this.$nextTick(() => {
+            this.setRingCharts()
+        })
+    },
+    beforeDestroy(){
+        // 组件销毁时销毁echarts实例，避免组件销毁，而echarts实例仍尝试操作已移除的DOM
+        if( this.chartInstance ){
+            this.chartInstance.dispose() //销毁实例，释放资源
+            this.chartInstance = null
+        }
     },
     methods:{
         // 创建echarts
         setRingCharts(){
-            const chartDom = document.getElementById('ringCharts');
-            const myChart = this.$echarts.init(chartDom);
+            const chartDom = this.$refs.ringChartsWrapper;
+            this.chartInstance = this.$echarts.init(chartDom);
             const option = {
                 // backgroundColor: "rgba(5,27,74, 1)", // 背景色
                 series: [
@@ -61,7 +70,6 @@ export default {
                             roundCap: false
                         },
                         itemStyle: {
-                            normal: {
                                 //具体颜色显示
                                 color: {
                                     type: "linear", // 使用径向渐变色
@@ -78,7 +86,6 @@ export default {
                                 //饼状图阴影，值越大阴影亮度越高
                                 // shadowBlur: 24, // 模糊
                                 // shadowColor: "rgba(0, 255, 229, 0.5)", // 圆环阴影色
-                            },
                         },
                         splitLine: {
                             // 分隔线样式。
@@ -120,7 +127,7 @@ export default {
                     },
                 ],
             };
-            myChart.setOption(option,true);
+            this.chartInstance.setOption(option,true);
         },
     }
     

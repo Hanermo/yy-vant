@@ -1,10 +1,13 @@
 <template>
     <div class="mine-wrapper">
         <div class="mine-header">
-            <van-icon class="avatar-icon"></van-icon>
             <div class="m-header-right">
                 <div class="h-r-name">{{ userForm.userName }}</div>
                 <div class="h-r-sign">{{ userForm.signature }}</div>
+            </div>
+            <van-icon class="avatar-icon h-vanIcon"></van-icon>
+            <div class="arrow-box" @click="back">
+                <svg-icon name="arrow" font-size="18px" class="i-arrow"></svg-icon>
             </div>
         </div>
         <div class="mine-content">
@@ -17,7 +20,7 @@
                     <van-icon name="arrow" size="16px"></van-icon>
                 </li>
             </ul>
-            <div class="mine-check-user">
+            <div class="mine-check-user" @click="toLogin">
                 <van-icon class="check-user"></van-icon>
                 退出登录
             </div>
@@ -28,16 +31,30 @@
 <script>
 export default {
     name:'mine',
+    props: {
+        show: {
+            type: Boolean,
+            default: false
+        }
+    },
     data(){
         return{
-        userForm: {
-            userName: '韩二墨',
-            signature: '发财'
+            userForm: {
+                userName: '韩二墨',
+                signature: '发财'
+            },
+            mineSetUpList: [
+                { menuIcon: 'user', menuName: '个人信息' },
+                { menuIcon: 'key', menuName: '更改密码' },
+            ]
+        }
+    },
+    methods: {
+        back(){
+            this.$emit('update:show',false)
         },
-        mineSetUpList: [
-            { menuIcon: 'user', menuName: '个人信息' },
-            { menuIcon: 'key', menuName: '更改密码' },
-        ]
+        toLogin(){
+            this.$router.push('/login')
         }
     }
 }
@@ -45,22 +62,49 @@ export default {
 
 <style lang="scss" scoped>
 .mine-wrapper{
+    background: url('@/assets/images/img/user-banner.png') no-repeat 0px 0px / 120%;
     .mine-header {
-        padding: 15px;
+        padding: 20px 15px 10px;
         display: flex;
         align-items: center;
-        background: #fafafa;
+        justify-content: space-between;
         gap: 8px;
+        position: relative;
+        height: 80px;
         .m-header-right{
-            line-height: 20px;
+            line-height: 22px;
+            color: #fff;
+            .h-r-name{
+                font-size: 16px;
+                font-weight: 600;
+            }
             .h-r-sign {
                 font-size: 12px;
-                color: $value-font;
             }
+        }
+        .h-vanIcon{
+            width: 55px;
+            height: 55px;
+        }
+        .arrow-box{
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            background: #e2e2e23d;
+            color: #E3E3E3;
+            border-radius: 50px;
+            padding: 2px;
+        }
+        .i-arrow{
+            transform: rotate(180deg);
         }
     }
     .mine-content {
         padding: 10px;
+        background: #fff;
+        border-radius: 10px 10px 0 0;
+        width: 100%;
+        box-sizing: border-box;
         .mine-ul-box{
             display: flex;
             flex-direction: column;

@@ -20,8 +20,8 @@
     </div>
 
     <!-- 打开我的弹窗 -->
-    <van-popup v-model="minePopupVisible" :style="{height: '100%',width: '80%'}" position="right" >
-      <mine></mine>
+    <van-popup v-model="minePopupVisible" :style="{height: '100%',width: '100%'}" position="right" >
+      <mine :show.sync="minePopupVisible"></mine>
     </van-popup>
  </div>
 </template>

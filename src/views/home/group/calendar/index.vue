@@ -25,6 +25,7 @@
 <script>
 import moment from 'moment'
 import lunar from 'chinese-lunar'
+moment.suppressDeprecationWarnings = true
 export default {
     name:'calendar',
     props: {

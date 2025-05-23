@@ -1,7 +1,7 @@
 <template>
   <div class="index">
 
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
     
     <div class="tabbar-footer">
       <van-tabbar v-model="active" route fixed active-color="#0164F6" inactive-color="#333">

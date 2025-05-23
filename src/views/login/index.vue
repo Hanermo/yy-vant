@@ -4,7 +4,7 @@
             <div class="login-form-wrap">
                 <p class="login-title">Login</p>
                 <input type="text" v-model="formParams.userName" placeholder="用户名" class="form-input"></input>
-                <input type="password" v-model="formParams.password" placeholder="密码" class="form-input"></input>
+                <input type="password" v-model="formParams.password" placeholder="密码" class="form-input" @keyup.enter="login"></input>
                 <van-button @click="login">登录</van-button>
             </div>
         </div>
